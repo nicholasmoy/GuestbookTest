@@ -75,9 +75,10 @@
 
       <form>Guestbook name:
         <input value="{{ guestbook_name }}" name="guestbook_name">
-        <input type="submit" value="switch">
+        <input type="submit" value="switch"> <br>
+        <input type="submit" value="Delete Guestbook" name="delete_button">
       </form>
-
+      
       <a href="{{ url|safe }}">{{ url_linktext }}</a>
     </div>
   </body>

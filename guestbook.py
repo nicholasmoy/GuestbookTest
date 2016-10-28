@@ -67,8 +67,16 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
         guestbook_name = self.request.get('guestbook_name',
                                           DEFAULT_GUESTBOOK_NAME)
+        delete_button = self.request.get('delete_button')
+
+      
         greetings_query = Greeting.query(
             ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
+
+        if delete_button:
+            for g in greetings_query:
+                g.key.delete()            
+
         greetings = greetings_query.fetch(10)
 
         user = users.get_current_user()
